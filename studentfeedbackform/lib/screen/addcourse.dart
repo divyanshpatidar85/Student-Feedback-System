@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:studentfeedbackform/UI/courses_Fac_UI.dart';
+import 'package:studentfeedbackform/anyaliticalscreen/courese_analitical_screen.dart';
 import 'package:studentfeedbackform/resourcses.dart/firestore_methods.dart';
+import 'package:studentfeedbackform/screen/FacultyAddUiBothPArtOFUIAndRAting/addcourseui.dart';
 import 'package:studentfeedbackform/widget/alertdialog.dart';
 import 'package:studentfeedbackform/widget/textfiled.dart';
 
@@ -16,6 +18,7 @@ class AddCouseScreen extends StatefulWidget {
 }
 
 class _AddCouseScreenState extends State<AddCouseScreen> {
+  int _page = 0;
   String selectedSem = 'sem'; // Default value
   List<String> sem = [
     'sem',
@@ -35,6 +38,29 @@ class _AddCouseScreenState extends State<AddCouseScreen> {
 
   @override
   Widget build(BuildContext context) {
+    late PageController pageControll = PageController();
+    @override
+    void initState() {
+      super.initState();
+      pageControll = PageController();
+    }
+
+    @override
+    void dispose() {
+      super.dispose();
+      pageControll.dispose();
+    }
+
+    void navigationTapped(int page) {
+      pageControll.jumpToPage(page);
+    }
+
+    void onPageChanged(int page) {
+      setState(() {
+        _page = page;
+      });
+    }
+
     return Scaffold(
         appBar: AppBar(
           title: const Text(
@@ -47,32 +73,87 @@ class _AddCouseScreenState extends State<AddCouseScreen> {
           centerTitle: true,
           backgroundColor: Color.fromARGB(255, 184, 174, 202),
         ),
-        body: StreamBuilder(
-          stream: FirebaseFirestore.instance.collection('courses').snapshots(),
-          builder: (context,
-              AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const CircularProgressIndicator(
-                color: Colors.red,
-              );
-            }
+        body: PageView(
+          physics: const NeverScrollableScrollPhysics(),
+          onPageChanged: onPageChanged,
+          controller: pageControll,
+          children: [
+            const FacultyAddCourseUi(),
+            StreamBuilder(
+              stream:
+                  FirebaseFirestore.instance.collection('courses').snapshots(),
+              builder: (context,
+                  AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator(
+                    color: Colors.red,
+                  );
+                }
 
-            return ListView.builder(
-              itemCount: snapshot.data!.docs.length,
-              itemBuilder: (context, index) {
-                var courseData = snapshot.data!.docs[index].data();
-                var courseName = courseData['coursename'] ?? 'No Name';
-                var courseId = courseData['couresid'] ?? 'No ID';
-                var courseUId = courseData['uid'] ?? 'No ID';
+                return ListView.builder(
+                  itemCount: snapshot.data!.docs.length,
+                  itemBuilder: (context, index) {
+                    var courseData = snapshot.data!.docs[index].data();
+                    var courseName = courseData['coursename'] ?? 'No Name';
+                    var courseId = courseData['couresid'] ?? 'No ID';
+                    var courseUId = courseData['uid'] ?? 'No ID';
 
-                return CourseFacUi(
-                  name: courseName,
-                  id: courseId,
-                  uid: courseUId,
+                    return AnalyticalCourseScreen(
+                      name: courseName,
+                      id: courseId,
+                      uid: courseUId,
+                    );
+                  },
                 );
               },
-            );
-          },
+            ),
+          ],
+        ),
+        // body: StreamBuilder(
+        //   stream: FirebaseFirestore.instance.collection('courses').snapshots(),
+        //   builder: (context,
+        //       AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+        //     if (snapshot.connectionState == ConnectionState.waiting) {
+        //       return const CircularProgressIndicator(
+        //         color: Colors.red,
+        //       );
+        //     }
+
+        //     return ListView.builder(
+        //       itemCount: snapshot.data!.docs.length,
+        //       itemBuilder: (context, index) {
+        //         var courseData = snapshot.data!.docs[index].data();
+        //         var courseName = courseData['coursename'] ?? 'No Name';
+        //         var courseId = courseData['couresid'] ?? 'No ID';
+        //         var courseUId = courseData['uid'] ?? 'No ID';
+
+        //         return CourseFacUi(
+        //           name: courseName,
+        //           id: courseId,
+        //           uid: courseUId,
+        //         );
+        //       },
+        //     );
+        //   },
+        // ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home_outlined,
+                  color: _page == 0 ? Colors.black : Colors.black12,
+                ),
+                label: 'Home',
+                backgroundColor: Colors.blueAccent),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.analytics,
+                  color: _page == 1 ? Colors.black : Colors.black12,
+                ),
+                label: 'Analytic',
+                backgroundColor: Colors.blueAccent),
+          ],
+          onTap: navigationTapped,
         ),
         floatingActionButton: FloatingActionButton(
             child: const Icon(
@@ -93,6 +174,7 @@ class _AddCouseScreenState extends State<AddCouseScreen> {
   }
 }
 
+// ignore: must_be_immutable
 class ShowDialogClasss extends StatefulWidget {
   String selectedSem;
   final List<String> sem;
@@ -183,6 +265,6 @@ class _ShowDialogClasssState extends State<ShowDialogClasss> {
 //   showDialog(
 //       context: context,
 //       builder: (context) {
-//         return 
+//         return
 //       });
 // }

@@ -46,7 +46,7 @@ class _FlashScreenState extends State<FlashScreen> {
                 ),
                 child: Container(
                   height: screenSize.height * 0.4,
-                  width: screenSize.width,
+                  width: screenSize.width * 0.4,
                   decoration:
                       BoxDecoration(borderRadius: BorderRadius.circular(2)),
                   // height: screenSize.height * 0.4,

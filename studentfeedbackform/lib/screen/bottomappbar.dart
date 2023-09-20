@@ -16,13 +16,13 @@ class _BottomAppBarrState extends State<BottomAppBarr> {
   String? sem; // Use nullable String for initial value
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   int _page = 0;
-  late PageController pageController;
+  late PageController pageControll;
 
   @override
   void initState() {
     super.initState();
     fetchSemValue();
-    pageController = PageController();
+    pageControll = PageController();
   }
 
   Future<void> fetchSemValue() async {
@@ -54,11 +54,11 @@ class _BottomAppBarrState extends State<BottomAppBarr> {
   @override
   void dispose() {
     super.dispose();
-    pageController.dispose();
+    pageControll.dispose();
   }
 
   void navigationTapped(int page) {
-    pageController.jumpToPage(page);
+    pageControll.jumpToPage(page);
   }
 
   void onPageChanged(int page) {
@@ -73,7 +73,7 @@ class _BottomAppBarrState extends State<BottomAppBarr> {
         ? Scaffold(
             body: PageView(
               physics: const NeverScrollableScrollPhysics(),
-              controller: pageController,
+              controller: pageControll,
               onPageChanged: onPageChanged,
               children: [
                 MainFeedScreen(

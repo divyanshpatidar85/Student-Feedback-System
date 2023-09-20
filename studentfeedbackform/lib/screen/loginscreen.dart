@@ -82,175 +82,181 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 // height: screenSize.height * 0.5,
                 width: screenSize.width * .52,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const CircleAvatar(
-                      radius: 80,
-                      backgroundImage: AssetImage('asset/image/login.webp'),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                            color: Colors.black87,
-                          )),
-                      child: DropdownButton<String>(
-                        value: selectedUserType,
-                        onChanged: (String? newValue) {
-                          if (newValue != null) {
-                            setState(() {
-                              selectedUserType = newValue;
-                            });
-                          }
-                        },
-                        items: userTypes
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                      ),
-                    ),
-                    SizedBox(
-                      height: screenSize.height * 0.04,
-                    ),
-                    TextFieldInput(
-                      hintText: 'Email',
-                      textEditingController: emailcontoller,
-                      isPass: false,
-                      textInputType: TextInputType.emailAddress,
-                    ),
-                    SizedBox(
-                      height: screenSize.height * 0.02,
-                    ),
-                    TextFieldInput(
-                        hintText: 'Password',
-                        textEditingController: passwordcontoller,
-                        isPass: true,
-                        textInputType: TextInputType.text),
-                    SizedBox(
-                      height: screenSize.height * 0.02,
-                    ),
-                    selectedUserType == 'Student'
-                        ? DropdownButton<String>(
-                            value: selectedSem,
+                child: Scrollbar(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const CircleAvatar(
+                          radius: 80,
+                          backgroundImage: AssetImage('asset/image/login.webp'),
+                        ),
+                        SizedBox(
+                          height: screenSize.height * 0.01,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              color: Colors.black87,
+                            ),
+                          ),
+                          child: DropdownButton<String>(
+                            value: selectedUserType,
                             onChanged: (String? newValue) {
                               if (newValue != null) {
-                                selectedSem = newValue;
-
-                                setState(() {});
+                                setState(() {
+                                  selectedUserType = newValue;
+                                });
                               }
                             },
-                            items: sem
+                            items: userTypes
                                 .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: Text(value),
                               );
                             }).toList(),
-                          )
-                        : SizedBox(),
-                    ElevatedButton(
-                      onPressed: () async {
-                        indicator = true;
-                        setState(() {});
-                        //here fire base auth will be call
-                        //login is called
-                        String s = await AuthMethods().loginMethod(
-                            email: emailcontoller.text,
-                            password: passwordcontoller.text,
-                            usertype: selectedUserType);
-                        print('s isssss   ==>${s}');
-                        if (s != 'success') {
-                          indicator = false;
-                          setState(() {});
-                          alterDiallog(context, s);
-                        } else if (s == 'success') {
-                          Timer(Duration(seconds: 3), () {
-                            print("s is ${s}   ===> ${selectedUserType}");
-                            if (selectedUserType == 'Stude') {
-                            } else if (selectedUserType == 'Admin') {
-                              widget.updateBl('Admin');
-
-                              selectedUserType = 'Admin';
-
-                              Navigator.of(context)
-                                  .pushReplacement(MaterialPageRoute(
-                                builder: (context) => const TimePasss(),
-                              ));
-                            } else if (selectedUserType == 'Faculty') {
-                              widget.updateBl('Faculty');
-                              selectedUserType = 'Faculty';
-                              print(selectedUserType);
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const AddCouseScreen()));
-                            }
-                            if (selectedUserType == 'Student') {
-                              print('i am student ');
-                              widget.updateBl('Student');
-                              selectedUserType = 'Student';
-                              Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const BottomAppBarr()));
-                            }
-                          });
-                        } else {
-                          print('error occcured');
-                        }
-                      },
-                      child: indicator
-                          ? const CircularProgressIndicator()
-                          : const Text(
-                              'Login ',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Center(
-                      child: InkWell(
-                        onTap: () {
-                          widget.updateBl('Student');
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignUpScreen(
-                                        updateBl: updateBll,
-                                      )));
-                        },
-                        child: SizedBox(
-                          width: screenSize.width,
-                          child: Center(
-                            child: RichText(
-                                text: const TextSpan(children: [
-                              TextSpan(
-                                  text: "Don't have anaccount  ",
-                                  style: TextStyle(
-                                      fontStyle: FontStyle.italic,
-                                      color: Colors.black)),
-                              TextSpan(
-                                  text: "Sign Up ",
-                                  style: TextStyle(
-                                      fontStyle: FontStyle.normal,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blue)),
-                            ])),
                           ),
                         ),
-                      ),
-                    )
-                  ],
+                        SizedBox(
+                          height: screenSize.height * 0.01,
+                        ),
+                        TextFieldInput(
+                          hintText: 'Email',
+                          textEditingController: emailcontoller,
+                          isPass: false,
+                          textInputType: TextInputType.emailAddress,
+                        ),
+                        SizedBox(
+                          height: screenSize.height * 0.01,
+                        ),
+                        TextFieldInput(
+                            hintText: 'Password',
+                            textEditingController: passwordcontoller,
+                            isPass: true,
+                            textInputType: TextInputType.text),
+                        SizedBox(
+                          height: screenSize.height * 0.01,
+                        ),
+                        selectedUserType == 'Student'
+                            ? DropdownButton<String>(
+                                value: selectedSem,
+                                onChanged: (String? newValue) {
+                                  if (newValue != null) {
+                                    selectedSem = newValue;
+
+                                    setState(() {});
+                                  }
+                                },
+                                items: sem.map<DropdownMenuItem<String>>(
+                                    (String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(value),
+                                  );
+                                }).toList(),
+                              )
+                            : SizedBox(),
+                        ElevatedButton(
+                          onPressed: () async {
+                            indicator = true;
+                            setState(() {});
+                            //here fire base auth will be call
+                            //login is called
+                            String s = await AuthMethods().loginMethod(
+                                email: emailcontoller.text,
+                                password: passwordcontoller.text,
+                                usertype: selectedUserType);
+                            print('s isssss   ==>${s}');
+                            if (s != 'success') {
+                              indicator = false;
+                              setState(() {});
+                              alterDiallog(context, s);
+                            } else if (s == 'success') {
+                              Timer(Duration(seconds: 3), () {
+                                print("s is ${s}   ===> ${selectedUserType}");
+                                if (selectedUserType == 'Stude') {
+                                } else if (selectedUserType == 'Admin') {
+                                  widget.updateBl('Admin');
+
+                                  selectedUserType = 'Admin';
+
+                                  Navigator.of(context)
+                                      .pushReplacement(MaterialPageRoute(
+                                    builder: (context) => const TimePasss(),
+                                  ));
+                                } else if (selectedUserType == 'Faculty') {
+                                  widget.updateBl('Faculty');
+                                  selectedUserType = 'Faculty';
+                                  print(selectedUserType);
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const AddCouseScreen()));
+                                }
+                                if (selectedUserType == 'Student') {
+                                  print('i am student ');
+                                  widget.updateBl('Student');
+                                  selectedUserType = 'Student';
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const BottomAppBarr()));
+                                }
+                              });
+                            } else {
+                              print('error occcured');
+                            }
+                          },
+                          child: indicator
+                              ? const CircularProgressIndicator()
+                              : const Text(
+                                  'Login ',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Center(
+                          child: InkWell(
+                            onTap: () {
+                              widget.updateBl('Student');
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignUpScreen(
+                                            updateBl: updateBll,
+                                          )));
+                            },
+                            child: SizedBox(
+                              width: screenSize.width,
+                              child: Center(
+                                child: RichText(
+                                    text: const TextSpan(children: [
+                                  TextSpan(
+                                      text: "Don't have anaccount  ",
+                                      style: TextStyle(
+                                          fontStyle: FontStyle.italic,
+                                          color: Colors.black)),
+                                  TextSpan(
+                                      text: "Sign Up ",
+                                      style: TextStyle(
+                                          fontStyle: FontStyle.normal,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.blue)),
+                                ])),
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ],

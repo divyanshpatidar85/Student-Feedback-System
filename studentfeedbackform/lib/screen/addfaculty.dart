@@ -80,7 +80,7 @@ showSimpleDialog(BuildContext context, String id) {
         return AlertDialog(
             backgroundColor: Colors.white,
             title: const Text(
-              'ADD COURSES ',
+              'Add Faculty ',
               style:
                   TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             ),

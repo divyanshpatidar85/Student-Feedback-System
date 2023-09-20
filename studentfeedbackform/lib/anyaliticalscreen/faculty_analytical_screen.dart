@@ -74,12 +74,12 @@ class _AnalyticalFacultyStateState extends State<AnalyticalFacultyState> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                width: screenSize.width * 0.8,
+                width: screenSize.height * 0.4,
                 child: Text(
                   'Faculty Name: ${widget.fname}',
-                  style: const TextStyle(
+                  style:  TextStyle(
                     color: Colors.black,
-                    fontSize: 30,
+                    fontSize: screenSize.height * 0.04,
                     fontWeight: FontWeight.bold,
                   ),
                   softWrap: true,
@@ -87,9 +87,9 @@ class _AnalyticalFacultyStateState extends State<AnalyticalFacultyState> {
               ),
               Text(
                 'Faculty Code: ${widget.fid}',
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.black,
-                  fontSize: 20,
+                  fontSize: screenSize.height * 0.03,
                   fontWeight: FontWeight.w300,
                 ),
               ),

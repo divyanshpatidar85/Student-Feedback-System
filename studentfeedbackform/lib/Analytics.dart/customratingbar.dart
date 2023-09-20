@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 class CustomRatingBar extends StatefulWidget {
@@ -54,7 +53,7 @@ class _CustomRatingBarState extends State<CustomRatingBar> {
       gridData: FlGridData(
         drawHorizontalLine: true,
         getDrawingHorizontalLine: (value) {
-          return FlLine(
+          return const FlLine(
             color: Colors.black12,
             strokeWidth: 1,
           );
