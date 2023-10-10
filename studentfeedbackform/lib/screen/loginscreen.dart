@@ -72,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.2), // Shadow color
+                      color: Colors.black.withOpacity(0.02), // Shadow color
                       spreadRadius: 10, // Spread radius
                       blurRadius: 100, // Blur radius
                       offset: const Offset(
@@ -125,6 +125,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: screenSize.height * 0.01,
                         ),
                         TextFieldInput(
+                          decoation: InputDecoration(),
+                          fontFamily: 'FontMain3',
                           hintText: 'Email',
                           textEditingController: emailcontoller,
                           isPass: false,
@@ -134,6 +136,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: screenSize.height * 0.01,
                         ),
                         TextFieldInput(
+                            decoation: InputDecoration(),
+                            fontFamily: 'FontMain3',
                             hintText: 'Password',
                             textEditingController: passwordcontoller,
                             isPass: true,

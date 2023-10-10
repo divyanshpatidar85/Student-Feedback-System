@@ -31,9 +31,9 @@ class AdminFacUi extends StatelessWidget {
                 child: Text(
                   'Faculty Name: $name',
                   maxLines: 4,
-                  style: const TextStyle(
+                  style: TextStyle(
                       color: Colors.black,
-                      fontSize: 30,
+                      fontSize: screenSize.height * 0.04,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'FontMain1'),
                   softWrap: true,
@@ -41,9 +41,9 @@ class AdminFacUi extends StatelessWidget {
               ),
               Text(
                 'Faculty Code $fcode',
-                style: const TextStyle(
+                style: TextStyle(
                     color: Colors.black,
-                    fontSize: 20,
+                    fontSize: screenSize.height * 0.03,
                     fontWeight: FontWeight.w300,
                     fontFamily: 'FontMain3'),
               ),

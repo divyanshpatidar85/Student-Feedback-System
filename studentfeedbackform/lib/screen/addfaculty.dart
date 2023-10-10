@@ -30,7 +30,7 @@ class _AddFacultyStateState extends State<AddFacultyState> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Add Faculty'),
-          backgroundColor: const Color.fromARGB(255, 184, 174, 202),
+          backgroundColor: const Color.fromARGB(255, 132, 181, 220),
         ),
         body: StreamBuilder(
           stream: FirebaseFirestore.instance
@@ -86,6 +86,8 @@ showSimpleDialog(BuildContext context, String id) {
             ),
             content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
               TextFieldInput(
+                  decoation: InputDecoration(),
+                  fontFamily: 'FontMain3',
                   textEditingController: FacultyNameController,
                   hintText: "Faculty Name",
                   textInputType: TextInputType.text),
@@ -93,6 +95,8 @@ showSimpleDialog(BuildContext context, String id) {
                 height: 5,
               ),
               TextFieldInput(
+                  decoation: InputDecoration(),
+                  fontFamily: 'FontMain3',
                   textEditingController: FacultyIdController,
                   hintText: "Faculty ID",
                   textInputType: TextInputType.text),

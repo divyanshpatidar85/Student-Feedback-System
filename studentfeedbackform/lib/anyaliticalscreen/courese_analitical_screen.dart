@@ -79,51 +79,81 @@ class _AnalyticalCourseScreenState extends State<AnalyticalCourseScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  width: screenSize.width * 0.8,
-                  child: Text(
-                    'Course: ${widget.name}',
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
+                  width: screenSize.width * 0.97,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: screenSize.height * 0.2,
+                          child: Image.asset('asset/image/courses.jpeg'),
+                        ),
+                      ],
                     ),
-                    softWrap: true,
                   ),
                 ),
-                Text(
-                  'Course Code ${widget.id}',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-                Text(
-                  'Rating is ${rating_val / i}',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w300,
-                  ),
+                Row(
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: screenSize.width * 0.8,
+                          child: Text(
+                            'Course: ${widget.name}',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: screenSize.height * 0.04,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'FontMain1',
+                            ),
+                            softWrap: true,
+                          ),
+                        ),
+                        Text(
+                          'Course Code ${widget.id}',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: screenSize.height * 0.03,
+                            fontWeight: FontWeight.w300,
+                            fontFamily: 'FontMain1',
+                          ),
+                        ),
+                        Text(
+                          'Rating is ${rating_val / i}',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: screenSize.height * 0.03,
+                            fontFamily: 'FontMain1',
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ],
+                    ),
+                    InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RatingBarState(
+                                  AnaCUid: widget.uid,
+                                  AnaFid: '',
+                                  iscourse: true,
+                                ),
+                              ));
+                        },
+                        child: const Text(
+                          'Analytic',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'FontMain3'),
+                        ))
+                  ],
                 ),
               ],
             ),
-            InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => RatingBarState(
-                          AnaCUid: widget.uid,
-                          AnaFid: '',
-                          iscourse: true,
-                        ),
-                      ));
-                },
-                child: const Text(
-                  'Analytic',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ))
           ],
         ),
       ),

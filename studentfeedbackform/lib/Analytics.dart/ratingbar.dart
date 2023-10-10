@@ -37,7 +37,7 @@ class _RatingBarStateState extends State<RatingBarState> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple.withOpacity(0.2),
+        backgroundColor: const Color.fromARGB(255, 132, 181, 220),
         title: Text("Analytical Rating"),
       ),
       body: FutureBuilder<void>(

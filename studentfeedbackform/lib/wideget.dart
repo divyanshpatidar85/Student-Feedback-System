@@ -11,9 +11,12 @@ class TimePasss extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Admin Window '),
+        title: Text(
+          'Admin Window ',
+          style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.05),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: const Color.fromARGB(255, 132, 181, 220),
       ),
       body: StreamBuilder(
         stream:
@@ -47,7 +50,7 @@ class TimePasss extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => AdminFacultyRegistration()));
+                  builder: (context) => const AdminFacultyRegistration()));
         },
         child: const Icon(
           Icons.add,

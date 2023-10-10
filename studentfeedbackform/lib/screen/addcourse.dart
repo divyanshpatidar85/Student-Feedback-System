@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:studentfeedbackform/UI/courses_Fac_UI.dart';
+
 import 'package:studentfeedbackform/anyaliticalscreen/courese_analitical_screen.dart';
 import 'package:studentfeedbackform/resourcses.dart/firestore_methods.dart';
 import 'package:studentfeedbackform/screen/FacultyAddUiBothPArtOFUIAndRAting/addcourseui.dart';
@@ -39,12 +39,14 @@ class _AddCouseScreenState extends State<AddCouseScreen> {
   @override
   Widget build(BuildContext context) {
     late PageController pageControll = PageController();
+    // ignore: unused_element
     @override
     void initState() {
       super.initState();
       pageControll = PageController();
     }
 
+    // ignore: unused_element
     @override
     void dispose() {
       super.dispose();
@@ -66,12 +68,10 @@ class _AddCouseScreenState extends State<AddCouseScreen> {
           title: const Text(
             'Add Course',
             style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
+                fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           centerTitle: true,
-          backgroundColor: Color.fromARGB(255, 184, 174, 202),
+          backgroundColor: Color.fromARGB(255, 132, 181, 220),
         ),
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),
@@ -139,19 +139,23 @@ class _AddCouseScreenState extends State<AddCouseScreen> {
         bottomNavigationBar: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home_outlined,
-                  color: _page == 0 ? Colors.black : Colors.black12,
-                ),
-                label: 'Home',
-                backgroundColor: Colors.blueAccent),
+              icon: Icon(
+                Icons.home_outlined,
+                color: _page == 0 ? Colors.black : Colors.black12,
+              ),
+              label: 'Home',
+              tooltip: 'Home',
+              // backgroundColor: Colors.yellow,
+            ),
             BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.analytics,
-                  color: _page == 1 ? Colors.black : Colors.black12,
-                ),
-                label: 'Analytic',
-                backgroundColor: Colors.blueAccent),
+              icon: Icon(
+                Icons.analytics,
+                color: _page == 1 ? Colors.black : Colors.black12,
+              ),
+              label: 'Analytic',
+              tooltip: 'Analytic',
+              // backgroundColor: Colors.yellow,
+            ),
           ],
           onTap: navigationTapped,
         ),
@@ -189,12 +193,13 @@ class _ShowDialogClasssState extends State<ShowDialogClasss> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 184, 174, 202),
+        backgroundColor: Colors.white,
         title: const Text(
           'Add Course',
           style: TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
+            // fontFamily: 'FontMain'
           ),
         ),
         centerTitle: true,
@@ -207,14 +212,19 @@ class _ShowDialogClasssState extends State<ShowDialogClasss> {
           ),
           content: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
             TextFieldInput(
-                textEditingController: CousreseNameController,
-                hintText: "Course Name",
-                textInputType: TextInputType.text),
+              textEditingController: CousreseNameController,
+              hintText: "Course Name",
+              textInputType: TextInputType.text,
+              fontFamily: 'FontMain3',
+              decoation: InputDecoration(),
+            ),
             const SizedBox(
               height: 5,
             ),
             TextFieldInput(
                 textEditingController: CousreseIdController,
+                decoation: InputDecoration(),
+                fontFamily: 'FontMain3',
                 hintText: "Course ID",
                 textInputType: TextInputType.text),
             const SizedBox(

@@ -22,7 +22,7 @@ class _FacultyDetailsOnAnalyticalScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 184, 174, 202),
+        backgroundColor: const Color.fromARGB(255, 132, 181, 220),
         title: const Text(
           'Faculty Details',
           style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),

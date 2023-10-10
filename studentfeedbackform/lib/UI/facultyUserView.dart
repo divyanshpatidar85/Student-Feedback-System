@@ -32,43 +32,52 @@ class _UserFacUiState extends State<UserFacUi> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                width: screenSize.width * 0.8,
+                width: screenSize.width * 0.7,
                 child: Text(
                   'Faculty Name: ${widget.fname}',
                   // maxLines: 3,
 
                   // overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
+                  style: TextStyle(
                       color: Colors.black,
-                      fontSize: 30,
+                      fontSize: MediaQuery.of(context).size.width * 0.07,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'FontMain1'),
                   softWrap: true,
+                  maxLines: 5,
                 ),
               ),
               Text(
                 'Faculty Code: ${widget.fid}',
-                style: const TextStyle(
+                style: TextStyle(
                     color: Colors.black,
-                    fontSize: 20,
+                    fontSize: MediaQuery.of(context).size.width * 0.05,
                     fontWeight: FontWeight.bold,
-                    fontFamily: 'FontMain2'),
+                    fontFamily: 'FontMain1'),
               ),
             ],
           ),
-          InkWell(
-              onTap: () {
-                print('$cid    $fid    ');
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ReviewScreen(
-                              courseid: cid,
-                              facultyid: fid,
-                              iscourse: false,
-                            )));
-              },
-              child: const Icon(Icons.rate_review))
+          TextButton(
+            onPressed: () {
+              print('$cid    $fid    ');
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ReviewScreen(
+                            courseid: cid,
+                            facultyid: fid,
+                            iscourse: false,
+                            coursename: widget.fname,
+                          )));
+            },
+            child: Text(
+              "Rate Faculty",
+              style: TextStyle(
+                  fontFamily: 'FontMain2', fontSize: screenSize.width * 0.04),
+              softWrap: true,
+              maxLines: 3,
+            ),
+          )
         ],
       ),
     );

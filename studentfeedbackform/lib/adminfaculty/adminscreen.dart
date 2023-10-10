@@ -31,7 +31,7 @@ class AdminFacultyRegistrationState extends State<AdminFacultyRegistration> {
         appBar: AppBar(
           title: const Text('Faculty Registration '),
           centerTitle: true,
-          backgroundColor: Colors.blueAccent,
+          backgroundColor: const Color.fromARGB(255, 132, 181, 220),
         ),
         body: Center(
           child: SizedBox(
@@ -40,16 +40,22 @@ class AdminFacultyRegistrationState extends State<AdminFacultyRegistration> {
             child: Column(
               children: [
                 TextFieldInput(
-                    textEditingController: usernamecontroller,
-                    hintText: 'Faculty UserName',
-                    textInputType: TextInputType.text),
+                  textEditingController: usernamecontroller,
+                  hintText: 'Faculty UserName',
+                  textInputType: TextInputType.text,
+                  decoation: InputDecoration(),
+                  fontFamily: 'FontMain3',
+                ),
                 const SizedBox(
                   height: 6,
                 ),
                 TextFieldInput(
-                    textEditingController: facultycodecontroller,
-                    hintText: 'Faculty code',
-                    textInputType: TextInputType.text),
+                  textEditingController: facultycodecontroller,
+                  hintText: 'Faculty code',
+                  textInputType: TextInputType.text,
+                  decoation: InputDecoration(),
+                  fontFamily: 'FontMain3',
+                ),
                 const SizedBox(
                   height: 6,
                 ),
@@ -57,15 +63,21 @@ class AdminFacultyRegistrationState extends State<AdminFacultyRegistration> {
                   textEditingController: emailcontroller,
                   hintText: 'Email',
                   textInputType: TextInputType.emailAddress,
+                  decoation: const InputDecoration(),
+                  // hintStyle: TextStyle(fontFamily: 'FontMain3')),
+                  fontFamily: 'FontMain3',
                 ),
                 const SizedBox(
                   height: 6,
                 ),
                 TextFieldInput(
-                    textEditingController: passwordcontroller,
-                    hintText: 'Password',
-                    textInputType: TextInputType.text,
-                    isPass: true),
+                  textEditingController: passwordcontroller,
+                  hintText: 'Password',
+                  textInputType: TextInputType.text,
+                  isPass: true,
+                  decoation: const InputDecoration(),
+                  fontFamily: 'FontMain3',
+                ),
                 const SizedBox(
                   height: 6,
                 ),

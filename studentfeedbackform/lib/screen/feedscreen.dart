@@ -27,10 +27,12 @@ class _MainFeedScreenState extends State<MainFeedScreen> {
     try {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 184, 174, 202),
-          title: const Text(
+          backgroundColor: const Color.fromARGB(255, 132, 181, 220),
+          title: Text(
             "Course Details ",
-            style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                fontSize: MediaQuery.of(context).size.height * 0.05,
+                fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
         ),

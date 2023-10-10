@@ -25,51 +25,66 @@ class CourseFacUi extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: screenSize.height * 0.4,
-                  child: Text(
-                    'Course: $name',
-                    maxLines: 4,
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: screenSize.height * 0.04,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'FontMain1'),
-                    softWrap: true,
+            Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        width: screenSize.width * 0.95,
+                        child: Image.asset('asset/image/courses.jpeg'),
+                      ),
+                    ],
                   ),
-                ),
-                Text(
-                  'Course Code $id',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: screenSize.height * 0.03,
-                      fontWeight: FontWeight.w300,
-                      fontFamily: 'FontMain3'),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                // InkWell(
-                //   child: const Text('Delete'),
-                //   onTap: () async {
-                // String s =
-                //     await FireStoreMethods().deleteFacultyByCourseId(uid);
-                // alterDiallog(context, s);
-                //   },
-                // ),
-                TextButton(
-                    onPressed: () async {
-                      String s =
-                          await FireStoreMethods().deleteFacultyByCourseId(uid);
-                      alterDiallog(context, s);
-                    },
-                    child: Text('Delete Course'))
-              ],
+                  Container(
+                    width: screenSize.width * 0.95,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // crossAxisAlignment:CrossAxisAlignment.end/,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: screenSize.height * 0.3,
+                              child: Text(
+                                'Course: $name',
+                                maxLines: 4,
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: screenSize.height * 0.04,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'FontMain1'),
+                                softWrap: true,
+                              ),
+                            ),
+                            Text(
+                              'Course Code $id',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: screenSize.height * 0.03,
+                                  fontWeight: FontWeight.w300,
+                                  fontFamily: 'FontMain3'),
+                            ),
+                          ],
+                        ),
+                        TextButton(
+                            onPressed: () async {
+                              String s = await FireStoreMethods()
+                                  .deleteFacultyByCourseId(uid);
+                              alterDiallog(context, s);
+                            },
+                            // child: const Text('Delete '))
+                            child: Text(
+                              'Delete',
+                              style: TextStyle(fontFamily: 'FontMain3'),
+                            )),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

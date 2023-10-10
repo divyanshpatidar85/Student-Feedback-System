@@ -24,49 +24,78 @@ class CourseScreenUIuser extends StatelessWidget {
       },
       child: Card(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  width: screenSize.width * 0.6911,
-                  child: Text(
-                    'Course: $name',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: screenSize.height * 0.04,
-                      fontWeight: FontWeight.bold,
+                  width: screenSize.width * 0.97,
+                  child: Center(
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          'asset/image/courses.jpeg',
+                          height: screenSize.height * 0.2,
+                          width: screenSize.width * 0.97,
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ],
                     ),
-                    softWrap: true,
                   ),
                 ),
-                Text(
-                  'Course Code $id',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: screenSize.height * 0.03,
-                    fontWeight: FontWeight.w300,
-                  ),
+                Row(
+                  // mainAxisAlignment: MainAxisAlignment.,
+                  children: [
+                    Column(
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: screenSize.width * 0.6911,
+                          child: Text(
+                            'Course: $name',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: screenSize.height * 0.04,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'FontMain1'),
+                            softWrap: true,
+                          ),
+                        ),
+                        Text(
+                          'Course Code $id',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: screenSize.height * 0.03,
+                              fontWeight: FontWeight.w300,
+                              fontFamily: 'FontMain1'),
+                        ),
+                      ],
+                    ),
+                    TextButton(
+                        onPressed: () {
+                          print('$name');
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ReviewScreen(
+                                        courseid: uid,
+                                        iscourse: true,
+                                        facultyid: '',
+                                        coursename: name,
+                                      )));
+                        },
+                        child: const Text(
+                          "Rate Course",
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold),
+                        )),
+                  ],
                 ),
               ],
             ),
-            TextButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ReviewScreen(
-                                courseid: uid,
-                                iscourse: true,
-                                facultyid: '',
-                              )));
-                },
-                child: const Text(
-                  "Rate Course",
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ))
+
             // InkWell(
             //     onTap: () {
             // Navigator.push(

@@ -74,39 +74,42 @@ class _AnalyticalFacultyStateState extends State<AnalyticalFacultyState> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                width: screenSize.height * 0.4,
+                width: screenSize.height * 0.35,
                 child: Text(
                   'Faculty Name: ${widget.fname}',
-                  style:  TextStyle(
-                    color: Colors.black,
-                    fontSize: screenSize.height * 0.04,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: screenSize.height * 0.03,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'FontMain1'),
                   softWrap: true,
                 ),
               ),
               Text(
                 'Faculty Code: ${widget.fid}',
                 style: TextStyle(
-                  color: Colors.black,
-                  fontSize: screenSize.height * 0.03,
-                  fontWeight: FontWeight.w300,
-                ),
+                    color: Colors.black,
+                    fontSize: screenSize.height * 0.02,
+                    fontWeight: FontWeight.w300,
+                    fontFamily: 'FontMain1'),
               ),
               Text(
                 'Rating: ${rating_val}',
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300,
-                ),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: screenSize.height * 0.02,
+                    fontWeight: FontWeight.w300,
+                    fontFamily: 'FontMain3'),
               ),
             ],
           ),
           Row(
             children: [
               InkWell(
-                child: const Icon(Icons.analytics),
+                child: const Text(
+                  'Analytic',
+                  style: TextStyle(fontFamily: 'FontMain3'),
+                ),
                 onTap: () async {
                   Navigator.push(
                       context,

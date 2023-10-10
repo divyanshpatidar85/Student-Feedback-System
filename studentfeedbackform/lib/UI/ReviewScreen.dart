@@ -6,16 +6,18 @@ import 'package:studentfeedbackform/Analytics.dart/analytics.dart';
 import 'package:studentfeedbackform/resourcses.dart/firestore_methods.dart';
 import 'package:studentfeedbackform/widget/alertdialog.dart';
 
+// ignore: must_be_immutable
 class ReviewScreen extends StatelessWidget {
   final bool iscourse;
   final String courseid;
   final String facultyid;
-  const ReviewScreen({
-    super.key,
-    required this.facultyid,
-    required this.iscourse,
-    required this.courseid,
-  });
+  String? coursename;
+  ReviewScreen(
+      {super.key,
+      required this.facultyid,
+      required this.iscourse,
+      required this.courseid,
+      this.coursename});
 
   @override
   Widget build(BuildContext context) {
@@ -23,32 +25,39 @@ class ReviewScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Feedback Screen'),
         centerTitle: true,
-        backgroundColor: Colors.deepPurple.withOpacity(0.2),
+        backgroundColor: Colors.white,
       ),
       body: Center(
           child: StarRating(
         facultyid: facultyid,
         iscoursee: iscourse,
         courseid: courseid,
+        coursename: coursename,
       )),
     );
   }
 }
 
+// ignore: must_be_immutable
 class StarRating extends StatefulWidget {
   final String courseid;
   final bool iscoursee;
   final String facultyid;
-  const StarRating(
+  String? coursename;
+  StarRating(
       {super.key,
       required this.facultyid,
       required this.iscoursee,
       required this.courseid,
-      bool? iscourse});
+      bool? iscourse,
+      this.coursename});
   @override
   // ignore: library_private_types_in_public_api, no_logic_in_create_state
   _StarRatingState createState() => _StarRatingState(
-      courseidd: courseid, iscourse: iscoursee, facultyIDd: facultyid);
+      courseidd: courseid,
+      iscourse: iscoursee,
+      facultyIDd: facultyid,
+      coursename: coursename);
 }
 
 class _StarRatingState extends State<StarRating> {
@@ -56,10 +65,12 @@ class _StarRatingState extends State<StarRating> {
   final String courseidd;
   final bool iscourse;
   final String facultyIDd;
+  String? coursename;
   _StarRatingState(
       {required this.facultyIDd,
       required this.courseidd,
-      required this.iscourse});
+      required this.iscourse,
+      this.coursename});
   @override
   void initState() => super.initState();
 
@@ -69,6 +80,32 @@ class _StarRatingState extends State<StarRating> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Yor are rating : $coursename',
+              style: TextStyle(
+                  fontFamily: 'FontMain1',
+                  fontSize: MediaQuery.of(context).size.width * 0.05),
+            ),
+          ],
+        ),
+        const Center(
+            child: Text("Ready to rate based on",
+                softWrap: true, style: TextStyle(fontFamily: 'FontMain3'))),
+        const Center(
+            child: Text(
+          'relevance, effectiveness, engagement,',
+          softWrap: true,
+          style: TextStyle(fontFamily: 'FontMain3'),
+        )),
+        const Center(
+            child: Text(
+          ' and overall value',
+          softWrap: true,
+          style: TextStyle(fontFamily: 'FontMain3'),
+        )),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(5, (index) {

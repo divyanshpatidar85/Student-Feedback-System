@@ -21,11 +21,13 @@ class _AnalyticDisplayState extends State<AnalyticDisplay> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Analytical Screen",
-          style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: MediaQuery.of(context).size.height * 0.05,
+              fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Color.fromARGB(255, 184, 174, 202),
+        backgroundColor: const Color.fromARGB(255, 132, 181, 220),
         centerTitle: true,
       ),
       body: StreamBuilder(

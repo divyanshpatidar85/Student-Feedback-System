@@ -39,9 +39,13 @@ class SignUpScreenState extends State<SignUpScreen> {
     final Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Sign Up Screen'),
+          title: Text(
+            'Sign Up Screen',
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: screenSize.width * 0.05),
+          ),
           centerTitle: true,
-          backgroundColor: Color.fromARGB(255, 184, 174, 202),
+          backgroundColor: const Color.fromARGB(255, 132, 181, 220),
         ),
         body: Center(
           child: SizedBox(
@@ -86,6 +90,8 @@ class SignUpScreenState extends State<SignUpScreen> {
                       )
                     : const SizedBox(),
                 TextFieldInput(
+                    decoation: InputDecoration(),
+                    fontFamily: 'FontMain3',
                     textEditingController: usernamecontroller,
                     hintText: 'Username',
                     textInputType: TextInputType.text),
@@ -93,6 +99,8 @@ class SignUpScreenState extends State<SignUpScreen> {
                   height: 6,
                 ),
                 TextFieldInput(
+                  decoation: InputDecoration(),
+                  fontFamily: 'FontMain3',
                   textEditingController: emailcontroller,
                   hintText: 'Email',
                   textInputType: TextInputType.emailAddress,
@@ -101,6 +109,8 @@ class SignUpScreenState extends State<SignUpScreen> {
                   height: 6,
                 ),
                 TextFieldInput(
+                    decoation: InputDecoration(),
+                    fontFamily: 'FontMain3',
                     textEditingController: passwordcontroller,
                     hintText: 'Password',
                     textInputType: TextInputType.text,

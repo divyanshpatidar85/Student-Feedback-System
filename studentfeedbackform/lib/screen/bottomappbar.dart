@@ -95,7 +95,7 @@ class _BottomAppBarrState extends State<BottomAppBarr> {
                     backgroundColor: Colors.blueAccent),
                 BottomNavigationBarItem(
                     icon: Icon(
-                      Icons.analytics,
+                      Icons.analytics_outlined,
                       color: _page == 1 ? Colors.black : Colors.black12,
                     ),
                     label: 'Analytic',
@@ -104,7 +104,7 @@ class _BottomAppBarrState extends State<BottomAppBarr> {
               onTap: navigationTapped,
             ),
           )
-        : Scaffold(
+        : const Scaffold(
             body: Center(child: CircularProgressIndicator()),
           );
   }
