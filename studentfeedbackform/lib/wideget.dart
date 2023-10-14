@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:studentfeedbackform/adminfaculty/adminscreen.dart';
 import 'package:studentfeedbackform/adminfaculty/adminui.dart';
+import 'package:studentfeedbackform/main.dart';
 
 class TimePasss extends StatelessWidget {
   const TimePasss({super.key});
@@ -11,9 +13,35 @@ class TimePasss extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Admin Window ',
-          style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.05),
+        // title: Text(
+        //   'Admin Window ',
+        //   style: TextStyle(fontSize: MediaQuery.of(context).size.height * 0.05),
+        // ),
+        title: ListTile(
+          title: const Center(
+            child: Text(
+              'Admin Window ',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                // fontFamily: 'FontMain'
+              ),
+            ),
+          ),
+          trailing: GestureDetector(
+            onTap: () async {
+              FirebaseAuth auth = FirebaseAuth.instance;
+              await auth.signOut();
+              // ignore: use_build_context_synchronously
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => MyHomePage(
+                            title: 'hello',
+                          )));
+            },
+            child: const Icon(Icons.logout),
+          ),
         ),
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 132, 181, 220),

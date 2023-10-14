@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:studentfeedbackform/main.dart';
 
 import 'package:studentfeedbackform/userviewscreen/userviewcourse.dart';
 
@@ -28,11 +30,37 @@ class _MainFeedScreenState extends State<MainFeedScreen> {
       return Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 132, 181, 220),
-          title: Text(
-            "Course Details ",
-            style: TextStyle(
-                fontSize: MediaQuery.of(context).size.height * 0.05,
-                fontWeight: FontWeight.bold),
+          // title: Text(
+          //   "Course Details ",
+          //   style: TextStyle(
+          //       fontSize: MediaQuery.of(context).size.height * 0.05,
+          //       fontWeight: FontWeight.bold),
+          // ),
+          title: ListTile(
+            title: const Center(
+              child: Text(
+                'Course Details',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  // fontFamily: 'FontMain'
+                ),
+              ),
+            ),
+            trailing: GestureDetector(
+              onTap: () async {
+                FirebaseAuth auth = FirebaseAuth.instance;
+                await auth.signOut();
+                // ignore: use_build_context_synchronously
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MyHomePage(
+                              title: 'Course Details ',
+                            )));
+              },
+              child: const Icon(Icons.logout),
+            ),
           ),
           centerTitle: true,
         ),

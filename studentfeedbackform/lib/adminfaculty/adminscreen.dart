@@ -29,7 +29,10 @@ class AdminFacultyRegistrationState extends State<AdminFacultyRegistration> {
     final Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Faculty Registration '),
+          title: const Text(
+            'Faculty Registration ',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           centerTitle: true,
           backgroundColor: const Color.fromARGB(255, 132, 181, 220),
         ),

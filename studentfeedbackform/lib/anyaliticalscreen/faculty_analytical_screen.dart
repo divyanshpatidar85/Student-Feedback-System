@@ -99,7 +99,7 @@ class _AnalyticalFacultyStateState extends State<AnalyticalFacultyState> {
                     color: Colors.black,
                     fontSize: screenSize.height * 0.02,
                     fontWeight: FontWeight.w300,
-                    fontFamily: 'FontMain3'),
+                    fontFamily: 'FontMain1'),
               ),
             ],
           ),

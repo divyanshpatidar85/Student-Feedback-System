@@ -33,7 +33,13 @@ class CourseFacUi extends StatelessWidget {
                     children: [
                       Container(
                         width: screenSize.width * 0.95,
-                        child: Image.asset('asset/image/courses.jpeg'),
+                        height: screenSize.height * 0.26,
+                        child: Image.asset(
+                          'asset/image/courses.jpeg',
+                          width: screenSize.width,
+                          height: screenSize.height * 0.26,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                     ],
                   ),
@@ -65,7 +71,7 @@ class CourseFacUi extends StatelessWidget {
                                   color: Colors.black,
                                   fontSize: screenSize.height * 0.03,
                                   fontWeight: FontWeight.w300,
-                                  fontFamily: 'FontMain3'),
+                                  fontFamily: 'FontMain1'),
                             ),
                           ],
                         ),

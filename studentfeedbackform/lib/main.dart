@@ -60,8 +60,10 @@ class _MyHomePageState extends State<MyHomePage> {
   String bl = 'Student';
   @override
   void initState() {
+    updateBl('');
     super.initState();
-    loadBl(); // Load the value of bl from SharedPreferences
+    loadBl();
+    // Load the value of bl from SharedPreferences
   }
 
   Future<void> loadBl() async {

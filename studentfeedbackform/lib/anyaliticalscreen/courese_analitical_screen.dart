@@ -22,6 +22,7 @@ class _AnalyticalCourseScreenState extends State<AnalyticalCourseScreen> {
   double rating_val = 0;
   late List<int> ratingsCountList;
   late List<Future<int>> ratingCountFutures;
+
   @override
   void initState() {
     print('Helli ');
@@ -86,8 +87,13 @@ class _AnalyticalCourseScreenState extends State<AnalyticalCourseScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          height: screenSize.height * 0.2,
-                          child: Image.asset('asset/image/courses.jpeg'),
+                          height: screenSize.height * 0.26,
+                          child: Image.asset(
+                            'asset/image/courses.jpeg',
+                            width: screenSize.width,
+                            height: screenSize.height * 0.26,
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ],
                     ),

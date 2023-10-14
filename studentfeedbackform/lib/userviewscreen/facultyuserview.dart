@@ -20,9 +20,11 @@ class _UserFacultyStateState extends State<UserFacultyState> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text(
+        title: Text(
           'Faculty Details',
-          style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: MediaQuery.of(context).size.height * 0.05,
+              fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),

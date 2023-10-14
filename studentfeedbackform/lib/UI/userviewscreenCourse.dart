@@ -31,14 +31,16 @@ class CourseScreenUIuser extends StatelessWidget {
               children: [
                 Container(
                   width: screenSize.width * 0.97,
+                  height: screenSize.height * 0.3,
                   child: Center(
                     child: Column(
                       children: [
                         Image.asset(
                           'asset/image/courses.jpeg',
-                          height: screenSize.height * 0.2,
-                          width: screenSize.width * 0.97,
-                          fit: BoxFit.fitWidth,
+                          width: screenSize.width,
+                          height: screenSize.height * 0.3,
+                          fit: BoxFit.fill,
+                          // fit: BoxFit.fitWidth,
                         ),
                       ],
                     ),

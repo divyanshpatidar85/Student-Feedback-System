@@ -11,20 +11,22 @@ import 'package:studentfeedbackform/widget/alertdialog.dart';
 import 'package:studentfeedbackform/widget/textfiled.dart';
 // import 'package:studentfeedbackform/dimesion/dimension.dart';
 
+// ignore: must_be_immutable
 class LoginScreen extends StatefulWidget {
-  final Function(String) updateBl;
-  const LoginScreen({
+  Function(String)? updateBl;
+  LoginScreen({
     super.key,
-    required this.updateBl,
+    this.updateBl,
   });
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState(updateBl);
+  State<LoginScreen> createState() => _LoginScreenState(updateBl!);
 }
 
 class _LoginScreenState extends State<LoginScreen> {
   final Function(String) updateBll;
   bool indicator = false;
+  static int count = 0;
   TextEditingController emailcontoller = TextEditingController();
   TextEditingController passwordcontoller = TextEditingController();
   String selectedUserType = 'Student'; // Default value
@@ -43,18 +45,13 @@ class _LoginScreenState extends State<LoginScreen> {
   ];
 
   _LoginScreenState(this.updateBll);
-  // @override
-  // void initState() {
-  //   super.initState();
-
-  //   getUserRole().then((value) {
-  //     if (value != null) {
-  //       setState(() {
-  //         selectedUserType = value;
-  //       });
-  //     }
-  //   });
-  // }
+  @override
+  void initState() {
+    super.initState();
+    // count == 0 ? widget.updateBl!('') : null;
+    // count = count + 1;
+    // widget.updateBl!('Student');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -166,25 +163,32 @@ class _LoginScreenState extends State<LoginScreen> {
                             : SizedBox(),
                         ElevatedButton(
                           onPressed: () async {
+                            String s = "false";
                             indicator = true;
                             setState(() {});
-                            //here fire base auth will be call
-                            //login is called
-                            String s = await AuthMethods().loginMethod(
-                                email: emailcontoller.text,
-                                password: passwordcontoller.text,
-                                usertype: selectedUserType);
+                            if (selectedUserType == 'Student' &&
+                                selectedSem == 'sem') {
+                              indicator = false;
+                              setState(() {});
+                              alterDiallog(context, 'Fill Sem value');
+                            } else {
+                              s = await AuthMethods().loginMethod(
+                                  email: emailcontoller.text,
+                                  password: passwordcontoller.text,
+                                  usertype: selectedUserType);
+                            }
                             print('s isssss   ==>${s}');
                             if (s != 'success') {
                               indicator = false;
                               setState(() {});
                               alterDiallog(context, s);
                             } else if (s == 'success') {
-                              Timer(Duration(seconds: 3), () {
+                              await Timer(const Duration(seconds: 3), () {
                                 print("s is ${s}   ===> ${selectedUserType}");
+
                                 if (selectedUserType == 'Stude') {
                                 } else if (selectedUserType == 'Admin') {
-                                  widget.updateBl('Admin');
+                                  widget.updateBl!('Admin');
 
                                   selectedUserType = 'Admin';
 
@@ -193,7 +197,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     builder: (context) => const TimePasss(),
                                   ));
                                 } else if (selectedUserType == 'Faculty') {
-                                  widget.updateBl('Faculty');
+                                  widget.updateBl!('Faculty');
                                   selectedUserType = 'Faculty';
                                   print(selectedUserType);
                                   Navigator.pushReplacement(
@@ -202,9 +206,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                           builder: (context) =>
                                               const AddCouseScreen()));
                                 }
-                                if (selectedUserType == 'Student') {
+                                if (selectedUserType == 'Student' &&
+                                    selectedSem != 'sem') {
                                   print('i am student ');
-                                  widget.updateBl('Student');
+                                  widget.updateBl!('Student');
                                   selectedUserType = 'Student';
                                   Navigator.of(context).pushReplacement(
                                       MaterialPageRoute(
@@ -229,7 +234,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Center(
                           child: InkWell(
                             onTap: () {
-                              widget.updateBl('Student');
+                              widget.updateBl!('Student');
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
