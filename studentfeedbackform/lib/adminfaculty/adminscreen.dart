@@ -40,78 +40,81 @@ class AdminFacultyRegistrationState extends State<AdminFacultyRegistration> {
           child: SizedBox(
             width: screenSize.width * 0.5,
             height: screenSize.height * 0.5,
-            child: Column(
-              children: [
-                TextFieldInput(
-                  textEditingController: usernamecontroller,
-                  hintText: 'Faculty UserName',
-                  textInputType: TextInputType.text,
-                  decoation: InputDecoration(),
-                  fontFamily: 'FontMain3',
-                ),
-                const SizedBox(
-                  height: 6,
-                ),
-                TextFieldInput(
-                  textEditingController: facultycodecontroller,
-                  hintText: 'Faculty code',
-                  textInputType: TextInputType.text,
-                  decoation: InputDecoration(),
-                  fontFamily: 'FontMain3',
-                ),
-                const SizedBox(
-                  height: 6,
-                ),
-                TextFieldInput(
-                  textEditingController: emailcontroller,
-                  hintText: 'Email',
-                  textInputType: TextInputType.emailAddress,
-                  decoation: const InputDecoration(),
-                  // hintStyle: TextStyle(fontFamily: 'FontMain3')),
-                  fontFamily: 'FontMain3',
-                ),
-                const SizedBox(
-                  height: 6,
-                ),
-                TextFieldInput(
-                  textEditingController: passwordcontroller,
-                  hintText: 'Password',
-                  textInputType: TextInputType.text,
-                  isPass: true,
-                  decoation: const InputDecoration(),
-                  fontFamily: 'FontMain3',
-                ),
-                const SizedBox(
-                  height: 6,
-                ),
-                ElevatedButton(
-                    onPressed: () async {
-                      indicator = false;
-                      setState(() {});
-                      String s = await AuthMethods().FacultyAdminSignUp(
-                          username: usernamecontroller.text,
-                          email: emailcontroller.text,
-                          password: passwordcontroller.text,
-                          fcode: facultycodecontroller.text);
-                      if (s != 'success') {
-                        indicator = true;
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                children: [
+                  TextFieldInput(
+                    textEditingController: usernamecontroller,
+                    hintText: 'Faculty UserName',
+                    textInputType: TextInputType.text,
+                    decoation: InputDecoration(),
+                    fontFamily: 'FontMain3',
+                  ),
+                  const SizedBox(
+                    height: 6,
+                  ),
+                  TextFieldInput(
+                    textEditingController: facultycodecontroller,
+                    hintText: 'Faculty code',
+                    textInputType: TextInputType.text,
+                    decoation: InputDecoration(),
+                    fontFamily: 'FontMain3',
+                  ),
+                  const SizedBox(
+                    height: 6,
+                  ),
+                  TextFieldInput(
+                    textEditingController: emailcontroller,
+                    hintText: 'Email',
+                    textInputType: TextInputType.emailAddress,
+                    decoation: const InputDecoration(),
+                    // hintStyle: TextStyle(fontFamily: 'FontMain3')),
+                    fontFamily: 'FontMain3',
+                  ),
+                  const SizedBox(
+                    height: 6,
+                  ),
+                  TextFieldInput(
+                    textEditingController: passwordcontroller,
+                    hintText: 'Password',
+                    textInputType: TextInputType.text,
+                    isPass: true,
+                    decoation: const InputDecoration(),
+                    fontFamily: 'FontMain3',
+                  ),
+                  const SizedBox(
+                    height: 6,
+                  ),
+                  ElevatedButton(
+                      onPressed: () async {
+                        indicator = false;
                         setState(() {});
-                        // ignore: use_build_context_synchronously
-                        alterDiallog(context, s);
-                      } else if (s == 'success') {
-                        passwordcontroller.text = "";
-                        emailcontroller.text = "";
-                        usernamecontroller.text = "";
-                        facultycodecontroller.text = "";
-                        indicator = true;
-                        setState(() {});
-                        alterDiallog(context, s);
-                      }
-                    },
-                    child: indicator
-                        ? const Text("Register")
-                        : const CircularProgressIndicator())
-              ],
+                        String s = await AuthMethods().FacultyAdminSignUp(
+                            username: usernamecontroller.text,
+                            email: emailcontroller.text,
+                            password: passwordcontroller.text,
+                            fcode: facultycodecontroller.text);
+                        if (s != 'success') {
+                          indicator = true;
+                          setState(() {});
+                          // ignore: use_build_context_synchronously
+                          alterDiallog(context, s);
+                        } else if (s == 'success') {
+                          passwordcontroller.text = "";
+                          emailcontroller.text = "";
+                          usernamecontroller.text = "";
+                          facultycodecontroller.text = "";
+                          indicator = true;
+                          setState(() {});
+                          alterDiallog(context, s);
+                        }
+                      },
+                      child: indicator
+                          ? const Text("Register")
+                          : const CircularProgressIndicator())
+                ],
+              ),
             ),
           ),
         ));

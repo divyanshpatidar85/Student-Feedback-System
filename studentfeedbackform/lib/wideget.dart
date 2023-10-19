@@ -32,6 +32,8 @@ class TimePasss extends StatelessWidget {
             onTap: () async {
               FirebaseAuth auth = FirebaseAuth.instance;
               await auth.signOut();
+              MyHomePage app = MyHomePage(title: '');
+              app.updateBl('');
               // ignore: use_build_context_synchronously
               Navigator.pushReplacement(
                   context,

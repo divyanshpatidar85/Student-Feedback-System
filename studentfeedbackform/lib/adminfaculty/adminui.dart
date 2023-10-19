@@ -45,7 +45,7 @@ class AdminFacUi extends StatelessWidget {
                     color: Colors.black,
                     fontSize: screenSize.height * 0.03,
                     fontWeight: FontWeight.w300,
-                    fontFamily: 'FontMain3'),
+                    fontFamily: 'FontMain1'),
               ),
             ],
           ),

@@ -54,13 +54,17 @@ class MyHomePage extends StatefulWidget {
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
+  void updateBl(String value) {
+    _MyHomePageState state = _MyHomePageState();
+    state.updateBl(value);
+  }
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   String bl = 'Student';
   @override
   void initState() {
-    updateBl('');
+    // updateBl('');
     super.initState();
     loadBl();
     // Load the value of bl from SharedPreferences

@@ -137,10 +137,14 @@ class FireStoreMethods {
   }
 
 //adding course rating
-  Future<String> addCourseReview(
-      {required String reviewCourseId,
-      required String reviewerId,
-      required int courseRating}) async {
+  Future<String> addCourseReview({
+    required String reviewCourseId,
+    required String reviewerId,
+    required int courseRating,
+    required int courseRating1,
+    required int courseRating2,
+    required int courseRating3,
+  }) async {
     String res = "Some error occurred";
     try {
       int rating = 0;
@@ -149,6 +153,9 @@ class FireStoreMethods {
         uid: reviewerId,
         rating: courseRating,
         courseid: reviewCourseId,
+        rating1: courseRating1,
+        rating2: courseRating2,
+        rating3: courseRating3,
       );
 
       // String lowercasefId = FId.toLowerCase();
@@ -190,6 +197,9 @@ class FireStoreMethods {
       {required String reviewCourseId,
       required String reviewerId,
       required int courseRating,
+      required int courseRating1,
+      required int courseRating2,
+      required int courseRating3,
       required String facultyID}) async {
     String res = "Some error occurred";
     try {
@@ -198,9 +208,12 @@ class FireStoreMethods {
       String uid = const Uuid().v1();
       AddFacultyReview cou = AddFacultyReview(
           uid: reviewerId,
-          rating: courseRating,
+          rating0: courseRating,
           courseid: reviewCourseId,
-          fid: facultyID);
+          fid: facultyID,
+          rating1: courseRating1,
+          rating2: courseRating2,
+          rating3: courseRating3);
 
       // String lowercasefId = FId.toLowerCase();
 

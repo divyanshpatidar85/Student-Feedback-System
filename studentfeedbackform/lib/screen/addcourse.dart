@@ -6,7 +6,7 @@ import 'package:studentfeedbackform/anyaliticalscreen/courese_analitical_screen.
 import 'package:studentfeedbackform/main.dart';
 import 'package:studentfeedbackform/resourcses.dart/firestore_methods.dart';
 import 'package:studentfeedbackform/screen/FacultyAddUiBothPArtOFUIAndRAting/addcourseui.dart';
-import 'package:studentfeedbackform/screen/loginscreen.dart';
+
 import 'package:studentfeedbackform/widget/alertdialog.dart';
 import 'package:studentfeedbackform/widget/textfiled.dart';
 
@@ -84,6 +84,12 @@ class _AddCouseScreenState extends State<AddCouseScreen> {
                   onTap: () async {
                     FirebaseAuth auth = FirebaseAuth.instance;
                     await auth.signOut();
+                    MyHomePage myHomePage = MyHomePage(
+                      title: 'hello',
+                    );
+                    // Access the state using the GlobalKey
+                    myHomePage.updateBl('');
+
                     // ignore: use_build_context_synchronously
                     Navigator.pushReplacement(
                         context,

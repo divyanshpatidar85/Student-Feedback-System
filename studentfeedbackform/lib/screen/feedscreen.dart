@@ -51,6 +51,10 @@ class _MainFeedScreenState extends State<MainFeedScreen> {
               onTap: () async {
                 FirebaseAuth auth = FirebaseAuth.instance;
                 await auth.signOut();
+                MyHomePage app = MyHomePage(
+                  title: 'heelo',
+                );
+                app.updateBl('');
                 // ignore: use_build_context_synchronously
                 Navigator.pushReplacement(
                     context,

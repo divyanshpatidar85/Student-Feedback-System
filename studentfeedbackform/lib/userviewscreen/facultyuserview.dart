@@ -19,7 +19,7 @@ class _UserFacultyStateState extends State<UserFacultyState> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: const Color.fromARGB(255, 132, 181, 220),
         title: Text(
           'Faculty Details',
           style: TextStyle(

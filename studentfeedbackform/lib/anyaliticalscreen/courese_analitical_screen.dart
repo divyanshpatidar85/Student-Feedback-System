@@ -21,7 +21,13 @@ class _AnalyticalCourseScreenState extends State<AnalyticalCourseScreen> {
   late int i = 0;
   double rating_val = 0;
   late List<int> ratingsCountList;
+  late List<int> ratingsCountList0;
+  late List<int> ratingsCountList1;
+  late List<int> ratingsCountList2;
   late List<Future<int>> ratingCountFutures;
+  late List<Future<int>> ratingCountFutures0;
+  late List<Future<int>> ratingCountFutures1;
+  late List<Future<int>> ratingCountFutures2;
 
   @override
   void initState() {
@@ -29,18 +35,72 @@ class _AnalyticalCourseScreenState extends State<AnalyticalCourseScreen> {
     super.initState();
     ratingsCountList = List<int>.filled(6, 0); // Initialize with zeros
     ratingCountFutures = List<Future<int>>.filled(6, Future.value(0));
+    ratingCountFutures0 = List<Future<int>>.filled(6, Future.value(0));
+    ratingCountFutures1 = List<Future<int>>.filled(6, Future.value(0));
+    ratingCountFutures2 = List<Future<int>>.filled(6, Future.value(0));
 
     for (int index = 0; index < 6; index++) {
       ratingCountFutures[index] = RatingCountScreen(
         cid: widget.uid,
         fid: '', // Adjust this as needed
         rating: index,
-      ).getRatingCountt();
+      ).getRatingCountt(0);
+    }
+    for (int index = 0; index < 6; index++) {
+      ratingCountFutures0[index] = RatingCountScreen(
+        cid: widget.uid,
+        fid: '', // Adjust this as needed
+        rating: index,
+      ).getRatingCountt(1);
+    }
+    for (int index = 0; index < 6; index++) {
+      ratingCountFutures1[index] = RatingCountScreen(
+        cid: widget.uid,
+        fid: '', // Adjust this as needed
+        rating: index,
+      ).getRatingCountt(2);
+    }
+    for (int index = 0; index < 6; index++) {
+      ratingCountFutures2[index] = RatingCountScreen(
+        cid: widget.uid,
+        fid: '', // Adjust this as needed
+        rating: index,
+      ).getRatingCountt(3);
     }
 
     print('Ram Ram ${widget.uid}'); // Check if widget.uid has a value
 
     Future.wait(ratingCountFutures).then((counts) {
+      // Check if counts contains valid data
+
+      ratingsCountList = counts;
+      print('course  $counts');
+      for (int j = 0; j < counts.length; j++) {
+        i = i + counts[j];
+        rating_val = rating_val + (counts[j] * j);
+      }
+    });
+    Future.wait(ratingCountFutures0).then((counts) {
+      // Check if counts contains valid data
+
+      ratingsCountList1 = counts;
+      print('course  $counts');
+      for (int j = 0; j < counts.length; j++) {
+        i = i + counts[j];
+        rating_val = rating_val + (counts[j] * j);
+      }
+    });
+    Future.wait(ratingCountFutures1).then((counts) {
+      // Check if counts contains valid data
+
+      ratingsCountList = counts;
+      print('course  $counts');
+      for (int j = 0; j < counts.length; j++) {
+        i = i + counts[j];
+        rating_val = rating_val + (counts[j] * j);
+      }
+    });
+    Future.wait(ratingCountFutures2).then((counts) {
       // Check if counts contains valid data
       setState(() {
         ratingsCountList = counts;
