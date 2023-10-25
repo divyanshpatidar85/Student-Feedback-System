@@ -18,6 +18,7 @@ class AuthMethods {
   // Signing Up User
   Future<String> signUpuser({
     required String username,
+    required String enrollno,
     required String email,
     required String password,
     required String sem,
@@ -37,7 +38,8 @@ class AuthMethods {
           'username': username,
           'email': email,
           'sem': sem,
-          'usertype': usertype
+          'usertype': usertype,
+          'enrollnum': enrollno
         });
         res = "success";
       }

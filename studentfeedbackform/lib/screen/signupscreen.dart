@@ -34,6 +34,7 @@ class SignUpScreenState extends State<SignUpScreen> {
   TextEditingController usernamecontroller = TextEditingController();
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
+  TextEditingController enrollcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
@@ -98,6 +99,17 @@ class SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 6,
                 ),
+                selectedusertype == 'Student'
+                    ? TextFieldInput(
+                        decoation: InputDecoration(),
+                        fontFamily: 'FontMain3',
+                        textEditingController: enrollcontroller,
+                        hintText: 'Enroll number',
+                        textInputType: TextInputType.text)
+                    : const SizedBox(),
+                const SizedBox(
+                  height: 6,
+                ),
                 TextFieldInput(
                   decoation: InputDecoration(),
                   fontFamily: 'FontMain3',
@@ -127,7 +139,8 @@ class SignUpScreenState extends State<SignUpScreen> {
                           email: emailcontroller.text,
                           password: passwordcontroller.text,
                           sem: selectedSem,
-                          usertype: selectedusertype);
+                          usertype: selectedusertype,
+                          enrollno: enrollcontroller.text);
                       if (s != 'success') {
                         indicator = true;
                         setState(() {});

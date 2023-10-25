@@ -44,6 +44,7 @@ dependencies:
   # fl_chart: ^0.63.0
   fl_chart: ^0.63.0
   cloud_functions: ^4.4.0
+  did_change_dependencies: ^1.0.0
 
 dev_dependencies:
   flutter_test:

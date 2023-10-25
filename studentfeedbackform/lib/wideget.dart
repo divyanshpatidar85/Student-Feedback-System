@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:studentfeedbackform/adminfaculty/adminscreen.dart';
 import 'package:studentfeedbackform/adminfaculty/adminui.dart';
 import 'package:studentfeedbackform/main.dart';
+import 'package:studentfeedbackform/updatestudentsem.dart';
 
 class TimePasss extends StatelessWidget {
   const TimePasss({super.key});
@@ -77,16 +78,104 @@ class TimePasss extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const AdminFacultyRegistration()));
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return Container(
+                height: 200, // Adjust the height to your preference
+                child: Wrap(
+                  children: <Widget>[
+                    ListTile(
+                      leading: Icon(Icons.edit),
+                      title: Text('Add teacher'),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const AdminFacultyRegistration()));
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.update),
+                      title: Text('Update Semester of student'),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const UpdateSemValue()));
+                      },
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
         },
-        child: const Icon(
-          Icons.add,
-          semanticLabel: "Add Courses",
-        ),
+        child: Icon(Icons.add),
       ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {},
+      //   child: Container(
+      //     width: 500,
+      //     child: Row(
+      //       children: [
+      //         GestureDetector(
+      //           child: Icon(
+      //             Icons.add,
+      //             semanticLabel: "Add Courses",
+      //           ),
+      //           onTap: () {
+      //             updateDocuments('i', 'ii');
+      //             Navigator.push(
+      //                 context,
+      //                 MaterialPageRoute(
+      //                     builder: (context) =>
+      //                         const AdminFacultyRegistration()));
+      //           },
+      //         ),
+      //         Icon(
+      //           Icons.update,
+      //           // semanticLabel: "Add Courses",
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      // ),
     );
   }
 }
+
+Future<String> updateDocuments(String i, String updatedSem) async {
+  String b = 'Some error occured';
+  FirebaseFirestore.instance
+      .collection('users')
+      .where('sem', isEqualTo: i)
+      .get()
+      .then((QuerySnapshot querySnapshot) {
+    querySnapshot.docs.forEach((doc) {
+      // This is where you can update the fields of the document
+      // For example, if you want to increment a 'count' field by 1:
+      // int currentCount = doc['count'];
+      String newCount = updatedSem;
+
+      // Create a map with the updated field
+      Map<String, dynamic> updatedData = {'sem': newCount};
+
+      // Update the document
+      doc.reference.update(updatedData).then((_) {
+        b = 'Document updated successfully';
+        print('ho gaya update');
+      }).catchError((error) {
+        b = 'Error updating document: $error';
+      });
+    });
+  });
+  await Future.delayed(Duration(seconds: 2));
+  return b;
+}
+
+// Call the function with your desired value of 'i'
+// int i = 3; // Replace this with your desired value
+
+

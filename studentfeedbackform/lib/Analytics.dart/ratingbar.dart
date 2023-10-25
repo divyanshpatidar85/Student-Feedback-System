@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:studentfeedbackform/Analytics.dart/customratingbar.dart';
 
+// ignore: must_be_immutable
 class RatingBarState extends StatefulWidget {
   String AnaCUid, AnaFid;
   bool iscourse;
@@ -87,11 +88,11 @@ class _RatingBarStateState extends State<RatingBarState> {
               },
             ),
             iscourse
-                ? Text('Relevance of Content',
+                ? Text('Breadth and Depth of Coverage',
                     style: TextStyle(
                         fontFamily: 'FontMain1',
                         fontSize: MediaQuery.of(context).size.height * 0.02))
-                : Text('Breadth and Depth of Coverage',
+                : Text('Teaching Method and Clarity',
                     style: TextStyle(
                         fontFamily: 'FontMain1',
                         fontSize: MediaQuery.of(context).size.height * 0.02)),
