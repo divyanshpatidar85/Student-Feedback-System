@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:studentfeedbackform/UI/ReviewScreen.dart';
 
@@ -40,7 +41,10 @@ class _UserFacUiState extends State<UserFacUi> {
                   // overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                       color: Colors.black,
-                      fontSize: MediaQuery.of(context).size.width * 0.07,
+                      fontSize:
+                          kIsWeb && MediaQuery.of(context).size.width > 375
+                              ? MediaQuery.of(context).size.height * 0.04
+                              : MediaQuery.of(context).size.width * 0.07,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'FontMain1'),
                   softWrap: true,
@@ -51,7 +55,9 @@ class _UserFacUiState extends State<UserFacUi> {
                 'Faculty Code: ${widget.fid}',
                 style: TextStyle(
                     color: Colors.black,
-                    fontSize: MediaQuery.of(context).size.width * 0.05,
+                    fontSize: kIsWeb && MediaQuery.of(context).size.width > 375
+                        ? MediaQuery.of(context).size.height * 0.04
+                        : MediaQuery.of(context).size.width * 0.03,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'FontMain1'),
               ),
@@ -70,10 +76,12 @@ class _UserFacUiState extends State<UserFacUi> {
                             coursename: widget.fname,
                           )));
             },
-            child: Text(
+            child: const Text(
               "Rate Faculty",
               style: TextStyle(
-                  fontFamily: 'FontMain2', fontSize: screenSize.width * 0.04),
+                color: Colors.black,
+                fontFamily: 'FontMain2',
+              ),
               softWrap: true,
               maxLines: 3,
             ),

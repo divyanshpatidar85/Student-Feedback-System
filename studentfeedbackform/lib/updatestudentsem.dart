@@ -10,6 +10,7 @@ class UpdateSemValue extends StatefulWidget {
 }
 
 class _UpdateSemValueState extends State<UpdateSemValue> {
+  bool refreshIndicator = false;
   List<String> sem = [
     'sem',
     'i',
@@ -68,10 +69,16 @@ class _UpdateSemValueState extends State<UpdateSemValue> {
           ),
           ElevatedButton(
               onPressed: () async {
+                refreshIndicator = true;
+                setState(() {});
                 String res = await updateDocuments(selectedSem, updatesem);
                 alterDiallog(context, res);
+                refreshIndicator = false;
+                setState(() {});
               },
-              child: const Text('Update'))
+              child: refreshIndicator
+                  ? const CircularProgressIndicator()
+                  : const Text('Update'))
         ],
       )),
     );

@@ -101,15 +101,47 @@ class _StarRatingState extends State<StarRating> {
           ),
           Center(
               child: iscourse
-                  ? const Text(
-                      'Relevance of Content',
-                      softWrap: true,
-                      style: TextStyle(fontFamily: 'FontMain1'),
+                  ? const Column(
+                      children: [
+                        Text(
+                          'Overall Course Experience :',
+                          softWrap: true,
+                          style: TextStyle(
+                              fontFamily: 'FontMain1',
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          'On a scale of 1-5, how would you rate your',
+                          softWrap: true,
+                          style: TextStyle(fontFamily: 'FontMain1'),
+                        ),
+                        Text(
+                          ' overall experience in this course',
+                          softWrap: true,
+                          style: TextStyle(fontFamily: 'FontMain1'),
+                        ),
+                      ],
                     )
-                  : const Text(
-                      'Knowledge and Expertise',
-                      softWrap: true,
-                      style: TextStyle(fontFamily: 'FontMain1'),
+                  : const Column(
+                      children: [
+                        Text(
+                          'Teaching Methods :',
+                          softWrap: true,
+                          style: TextStyle(
+                              fontFamily: 'FontMain1',
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          ' Did the teacher effectively use',
+                          softWrap: true,
+                          style: TextStyle(fontFamily: 'FontMain1'),
+                        ),
+                        Text(
+                          ' a variety of teaching methods and strategies ?',
+                          softWrap: true,
+                          style: TextStyle(fontFamily: 'FontMain1'),
+                        ),
+                      ],
                     )),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -130,15 +162,47 @@ class _StarRatingState extends State<StarRating> {
           ),
           Center(
               child: iscourse
-                  ? const Text(
-                      'Breadth and Depth of Coverage',
-                      softWrap: true,
-                      style: TextStyle(fontFamily: 'FontMain1'),
+                  ? const Column(
+                      children: [
+                        Text(
+                          'Course Content :',
+                          softWrap: true,
+                          style: TextStyle(
+                              fontFamily: 'FontMain1',
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          ' Did the course content align with',
+                          softWrap: true,
+                          style: TextStyle(fontFamily: 'FontMain1'),
+                        ),
+                        Text(
+                          ' your expectations and goals ?',
+                          softWrap: true,
+                          style: TextStyle(fontFamily: 'FontMain1'),
+                        ),
+                      ],
                     )
-                  : const Text(
-                      'Teaching Methods and Clarity',
-                      softWrap: true,
-                      style: TextStyle(fontFamily: 'FontMain1'),
+                  : const Column(
+                      children: [
+                        Text(
+                          'Clarity and Communication :',
+                          softWrap: true,
+                          style: TextStyle(
+                              fontFamily: 'FontMain1',
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          "Was the teacher's communication",
+                          softWrap: true,
+                          style: TextStyle(fontFamily: 'FontMain1'),
+                        ),
+                        Text(
+                          " clear and easy to understand ?",
+                          softWrap: true,
+                          style: TextStyle(fontFamily: 'FontMain1'),
+                        ),
+                      ],
                     )),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -159,15 +223,47 @@ class _StarRatingState extends State<StarRating> {
           ),
           Center(
               child: iscourse
-                  ? const Text(
-                      'Clarity and Organization of Material',
-                      softWrap: true,
-                      style: TextStyle(fontFamily: 'FontMain1'),
+                  ? const Column(
+                      children: [
+                        Text(
+                          'Course Goals and Outcome :',
+                          softWrap: true,
+                          style: TextStyle(
+                              fontFamily: 'FontMain1',
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          'Did you feel that you achieved the learning',
+                          softWrap: true,
+                          style: TextStyle(fontFamily: 'FontMain1'),
+                        ),
+                        Text(
+                          ' objectives and goals of this course ?',
+                          softWrap: true,
+                          style: TextStyle(fontFamily: 'FontMain1'),
+                        ),
+                      ],
                     )
-                  : const Text(
-                      'Accessibility and Approachability',
-                      softWrap: true,
-                      style: TextStyle(fontFamily: 'FontMain1'),
+                  : const Column(
+                      children: [
+                        Text(
+                          'Availability and Responsiveness :',
+                          softWrap: true,
+                          style: TextStyle(
+                              fontFamily: 'FontMain1',
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          'Did the teacher make themselves ',
+                          softWrap: true,
+                          style: TextStyle(fontFamily: 'FontMain1'),
+                        ),
+                        Text(
+                          'available for questions and support ?',
+                          softWrap: true,
+                          style: TextStyle(fontFamily: 'FontMain1'),
+                        ),
+                      ],
                     )),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -188,15 +284,47 @@ class _StarRatingState extends State<StarRating> {
           ),
           Center(
               child: iscourse
-                  ? const Text(
-                      'Engagement and Interactive Elements',
-                      softWrap: true,
-                      style: TextStyle(fontFamily: 'FontMain1'),
+                  ? const Column(
+                      children: [
+                        Text(
+                          'Course Structure and Organization :',
+                          softWrap: true,
+                          style: TextStyle(
+                              fontFamily: 'FontMain1',
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          'How well was the course ',
+                          softWrap: true,
+                          style: TextStyle(fontFamily: 'FontMain1'),
+                        ),
+                        Text(
+                          'organized and structured ?',
+                          softWrap: true,
+                          style: TextStyle(fontFamily: 'FontMain1'),
+                        ),
+                      ],
                     )
-                  : const Text(
-                      'Engagement and Student Involvement',
-                      softWrap: true,
-                      style: TextStyle(fontFamily: 'FontMain1'),
+                  : const Column(
+                      children: [
+                        Text(
+                          'Knowledge and Expertise :',
+                          softWrap: true,
+                          style: TextStyle(
+                              fontFamily: 'FontMain1',
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          'Did the teacher demonstrate',
+                          softWrap: true,
+                          style: TextStyle(fontFamily: 'FontMain1'),
+                        ),
+                        Text(
+                          'a strong grasp of the subject matter ?',
+                          softWrap: true,
+                          style: TextStyle(fontFamily: 'FontMain1'),
+                        ),
+                      ],
                     )),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

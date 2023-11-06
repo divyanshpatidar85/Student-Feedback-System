@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:studentfeedbackform/resourcses.dart/auth_method.dart';
-import 'package:studentfeedbackform/screen/addcourse.dart';
+import 'package:studentfeedbackform/screen/bottomappbar.dart';
+
 import 'package:studentfeedbackform/screen/feedscreen.dart';
 import 'package:studentfeedbackform/wideget.dart';
 import 'package:studentfeedbackform/widget/alertdialog.dart';
@@ -157,9 +158,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                           // ignore: use_build_context_synchronously
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                              builder: (context) => MainFeedScreen(
-                                sem: selectedSem,
-                              ),
+                              builder: (context) => const BottomAppBarr(),
                             ),
                           );
                         } else if (selectedusertype == 'Admin') {

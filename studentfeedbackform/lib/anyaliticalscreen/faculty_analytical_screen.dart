@@ -22,8 +22,17 @@ class AnalyticalFacultyState extends StatefulWidget {
 class _AnalyticalFacultyStateState extends State<AnalyticalFacultyState> {
   final String fid;
   final String cid;
-  late int i = 0;
-  double rating_val = 0;
+  int i = 0, i1 = 0, i2 = 0, i3 = 0, i4 = 0;
+  // ignore: non_constant_identifier_names
+  double rating_val = 0,
+      // ignore: non_constant_identifier_names
+      rating_val1 = 0,
+      // ignore: non_constant_identifier_names
+      rating_val2 = 0,
+      // ignore: non_constant_identifier_names
+      rating_val3 = 0,
+      // ignore: non_constant_identifier_names
+      rating_val4 = 0;
   late List<int> ratingsCountList;
   late List<int> ratingsCountList1;
   late List<int> ratingsCountList2;
@@ -82,7 +91,9 @@ class _AnalyticalFacultyStateState extends State<AnalyticalFacultyState> {
       print('course  $counts');
       for (int j = 0; j < counts.length; j++) {
         i = i + counts[j];
+        i1 = i1 + counts[j];
         rating_val = rating_val + (counts[j] * j);
+        rating_val1 = (rating_val1 + (counts[j] * j));
       }
     });
     Future.wait(ratingCountFutures2).then((counts) {
@@ -92,7 +103,9 @@ class _AnalyticalFacultyStateState extends State<AnalyticalFacultyState> {
       print('course  $counts');
       for (int j = 0; j < counts.length; j++) {
         i = i + counts[j];
+        i2 = i2 + counts[j];
         rating_val = rating_val + (counts[j] * j);
+        rating_val2 = (rating_val2 + (counts[j] * j));
       }
     });
     Future.wait(ratingCountFutures1).then((counts) {
@@ -102,7 +115,9 @@ class _AnalyticalFacultyStateState extends State<AnalyticalFacultyState> {
       print('course  $counts');
       for (int j = 0; j < counts.length; j++) {
         i = i + counts[j];
+        i3 = i3 + counts[j];
         rating_val = rating_val + (counts[j] * j);
+        rating_val3 = (rating_val3 + (counts[j] * j));
       }
     });
     Future.wait(ratingCountFutures).then((counts) {
@@ -112,7 +127,9 @@ class _AnalyticalFacultyStateState extends State<AnalyticalFacultyState> {
         print('course  $counts');
         for (int j = 0; j < counts.length; j++) {
           i = i + counts[j];
+          i4 = i4 + counts[j];
           rating_val = rating_val + (counts[j] * j);
+          rating_val4 = (rating_val4 + (counts[j] * j));
         }
       });
     });
@@ -136,7 +153,7 @@ class _AnalyticalFacultyStateState extends State<AnalyticalFacultyState> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                width: screenSize.height * 0.35,
+                width: screenSize.width * 0.6,
                 child: Text(
                   'Faculty Name: ${widget.fname}',
                   style: TextStyle(
@@ -156,7 +173,7 @@ class _AnalyticalFacultyStateState extends State<AnalyticalFacultyState> {
                     fontFamily: 'FontMain1'),
               ),
               Text(
-                'Rating: ${rating_val}',
+                'Rating: ${(rating_val).toStringAsFixed(2)}',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: screenSize.height * 0.02,
@@ -180,6 +197,10 @@ class _AnalyticalFacultyStateState extends State<AnalyticalFacultyState> {
                                 AnaCUid: cid,
                                 AnaFid: fid,
                                 iscourse: false,
+                                rating0: rating_val1 / i1,
+                                rating1: rating_val2 / i2,
+                                rating2: rating_val3 / i3,
+                                rating3: rating_val4 / i4,
                               )));
                 },
               ),

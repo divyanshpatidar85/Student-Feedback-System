@@ -38,7 +38,7 @@ class _MainFeedScreenState extends State<MainFeedScreen> {
       return Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-          toolbarHeight: MediaQuery.of(context).size.width * 0.1,
+          toolbarHeight: MediaQuery.of(context).size.height * 0.1,
           backgroundColor: const Color.fromARGB(255, 132, 181, 220),
           // title: Text(
           //   "Course Details ",
@@ -51,7 +51,9 @@ class _MainFeedScreenState extends State<MainFeedScreen> {
               child: Text(
                 'Course Details',
                 style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * 0.07,
+                  fontSize: kIsWeb
+                      ? MediaQuery.of(context).size.height * 0.03
+                      : MediaQuery.of(context).size.width * 0.06,
                   fontWeight: FontWeight.bold,
                   // fontFamily: 'FontMain'
                 ),
@@ -200,14 +202,23 @@ class _MainFeedScreenState extends State<MainFeedScreen> {
                                                   .height *
                                               0.02),
                                     ),
-                                    Text(
-                                      'Active',
-                                      style: TextStyle(
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.02),
-                                    )
+                                    courseData['sem'] != 'sem'
+                                        ? Text(
+                                            'Active',
+                                            style: TextStyle(
+                                                fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.02),
+                                          )
+                                        : Text(
+                                            'Deactive',
+                                            style: TextStyle(
+                                                fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.02),
+                                          )
                                   ],
                                 ),
                               ),

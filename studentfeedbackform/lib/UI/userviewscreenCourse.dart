@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:studentfeedbackform/UI/ReviewScreen.dart';
 import 'package:studentfeedbackform/userviewscreen/facultyuserview.dart';
@@ -24,12 +25,12 @@ class CourseScreenUIuser extends StatelessWidget {
       },
       child: Card(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
+                SizedBox(
                   width: screenSize.width * 0.97,
                   height: screenSize.height * 0.3,
                   child: Center(
@@ -47,14 +48,16 @@ class CourseScreenUIuser extends StatelessWidget {
                   ),
                 ),
                 Row(
-                  // mainAxisAlignment: MainAxisAlignment.,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Column(
                       // mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
-                          width: screenSize.width * 0.6911,
+                          width: kIsWeb
+                              ? screenSize.width * 0.78
+                              : screenSize.width * 0.6911,
                           child: Text(
                             'Course: $name',
                             style: TextStyle(
@@ -75,6 +78,7 @@ class CourseScreenUIuser extends StatelessWidget {
                         ),
                       ],
                     ),
+                    // Spacer(),
                     TextButton(
                         onPressed: () {
                           print('$name');
@@ -91,7 +95,9 @@ class CourseScreenUIuser extends StatelessWidget {
                         child: const Text(
                           "Rate Course",
                           style: TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.bold),
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
                         )),
                   ],
                 ),

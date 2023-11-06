@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:studentfeedbackform/resourcses.dart/auth_method.dart';
@@ -78,7 +79,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 // height: screenSize.height * 0.5,
-                width: screenSize.width * .52,
+                width: screenSize.width > 375 && kIsWeb
+                    ? screenSize.width * .3
+                    : screenSize.width * .52,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Column(

@@ -18,8 +18,12 @@ class AnalyticalCourseScreen extends StatefulWidget {
 }
 
 class _AnalyticalCourseScreenState extends State<AnalyticalCourseScreen> {
-  late int i = 0;
-  double rating_val = 0;
+  late int i = 0, i1 = 0, i2 = 0, i3 = 0, i4 = 0;
+  double rating_val = 0,
+      rating_val1 = 0,
+      rating_val2 = 0,
+      rating_val3 = 0,
+      rating_val4 = 0;
   late List<int> ratingsCountList;
   late List<int> ratingsCountList0;
   late List<int> ratingsCountList1;
@@ -77,6 +81,9 @@ class _AnalyticalCourseScreenState extends State<AnalyticalCourseScreen> {
       print('course  $counts');
       for (int j = 0; j < counts.length; j++) {
         i = i + counts[j];
+        // i1=i;
+        i1 = i1 + counts[j];
+        rating_val4 = (rating_val4 + (counts[j] * j));
         rating_val = rating_val + (counts[j] * j);
       }
     });
@@ -87,6 +94,8 @@ class _AnalyticalCourseScreenState extends State<AnalyticalCourseScreen> {
       print('course  $counts');
       for (int j = 0; j < counts.length; j++) {
         i = i + counts[j];
+        i2 = i2 + counts[j];
+        rating_val1 = (rating_val1 + (counts[j] * j));
         rating_val = rating_val + (counts[j] * j);
       }
     });
@@ -97,6 +106,8 @@ class _AnalyticalCourseScreenState extends State<AnalyticalCourseScreen> {
       print('course  $counts');
       for (int j = 0; j < counts.length; j++) {
         i = i + counts[j];
+        i3 = i3 + counts[j];
+        rating_val2 = (rating_val2 + (counts[j] * j));
         rating_val = rating_val + (counts[j] * j);
       }
     });
@@ -107,11 +118,13 @@ class _AnalyticalCourseScreenState extends State<AnalyticalCourseScreen> {
         print('course  $counts');
         for (int j = 0; j < counts.length; j++) {
           i = i + counts[j];
+          i4 = i4 + counts[j];
+          rating_val3 = (rating_val3 + (counts[j] * j));
           rating_val = rating_val + (counts[j] * j);
         }
       });
     });
-    Timer(Duration(seconds: 1), () {
+    Timer(const Duration(seconds: 1), () {
       print("i is :$i");
       rating_val = rating_val;
       setState(() {});
@@ -151,7 +164,7 @@ class _AnalyticalCourseScreenState extends State<AnalyticalCourseScreen> {
                           child: Image.asset(
                             'asset/image/courses.jpeg',
                             width: screenSize.width,
-                            height: screenSize.height * 0.26,
+                            height: screenSize.height * 0.3,
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -188,7 +201,7 @@ class _AnalyticalCourseScreenState extends State<AnalyticalCourseScreen> {
                           ),
                         ),
                         Text(
-                          'Rating is ${rating_val / i}',
+                          'Course Rating: ${(rating_val / i).toStringAsFixed(2)}',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: screenSize.height * 0.03,
@@ -207,6 +220,10 @@ class _AnalyticalCourseScreenState extends State<AnalyticalCourseScreen> {
                                   AnaCUid: widget.uid,
                                   AnaFid: '',
                                   iscourse: true,
+                                  rating0: rating_val4 / i1,
+                                  rating1: rating_val1 / i2,
+                                  rating2: rating_val2 / i3,
+                                  rating3: rating_val3 / i4,
                                 ),
                               ));
                         },
